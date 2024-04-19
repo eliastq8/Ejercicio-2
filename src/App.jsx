@@ -5,7 +5,7 @@ import Login from './views/Login';
 import Profile from './views/Profile';
 import app from '../firebase-config';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import Protected from './Protected';
+import Protected from './components/Protected';
 
 function App() {
   const[userAuth, setUserAuth] = useState(null);
@@ -24,11 +24,12 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/login" element={<Login />} />
        <Route element={<Protected isActive={!userAuth}/>}>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
        </Route>
-       <Route path="/login" element={<Login />} />
+       
       </Routes>
     </>
   )
